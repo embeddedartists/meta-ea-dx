@@ -1,0 +1,12 @@
+diff -ur a/pci_deepx/dw-edma-pcie.c b/pci_deepx/dw-edma-pcie.c
+--- a/pci_deepx/dw-edma-pcie.c
++++ b/pci_deepx/dw-edma-pcie.c
+@@ -373,7 +373,7 @@
+ 	/* Data structure initialization */
+ 	chip->dw = dw;
+ 	chip->dev = dev;
+-	chip->id = pdev->devfn;
++	// chip->id = pdev->devfn;
+ 	// chip->irq = pdev->irq;
+ 
+ 	dw->mf = vsec_data.mf;
