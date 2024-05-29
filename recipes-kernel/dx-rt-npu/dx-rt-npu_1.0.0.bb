@@ -22,8 +22,6 @@ do_install:append () {
 	install -d ${D}${sysconfdir}/modprobe.d
 	install -m 0644 ${S}/dx_dma.conf ${D}${sysconfdir}/modprobe.d/dx_dma.conf
 
-	bbwarn "EA do_install S=${S}"
-
 	# udev rules
 	echo "#Change mode rules for DEEPX's PCIe driver" > "${S}/51-deepx-udev.rules"
 	echo "SUBSYSTEM==\"dxrt\", MODE=\"0666\"" >> "${S}/51-deepx-udev.rules"
