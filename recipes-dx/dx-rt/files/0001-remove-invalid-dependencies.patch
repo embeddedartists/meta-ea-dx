@@ -1,0 +1,20 @@
+--- a_dx_rt/cmake/dxrt.function.cmake	2024-05-14 07:55:32.000000000 +0000
++++ b_dx_rt/cmake/dxrt.function.cmake	2024-05-31 10:24:38.931378742 +0000
+@@ -45,5 +45,4 @@
+     add_executable(${target} ${ARG_SRC_LIST})
+     add_dxrt(${target})
+     install(TARGETS ${target} DESTINATION bin)
+-    install(TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin)
+ endmacro(add_target)
+diff -ur a_dx_rt/CMakeLists.txt b_dx_rt/CMakeLists.txt
+--- a_dx_rt/CMakeLists.txt	2024-05-14 07:55:32.000000000 +0000
++++ b_dx_rt/CMakeLists.txt	2024-05-31 10:25:14.011422851 +0000
+@@ -6,7 +6,7 @@
+     set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/release" CACHE PATH "Default install path" FORCE)
+ endif()
+ # set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib ${CMAKE_SOURCE_DIR}/lib/lib)
+-set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib ${CMAKE_BINARY_DIR}/lib)
++set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
+ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+ 
