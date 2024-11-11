@@ -7,7 +7,6 @@ SRC_PATH ?= "/mnt/uuu-storage/deepx"
 SRC_FILE ?= "${BP}.tar.gz"
 
 SRC_URI = "file://${SRC_PATH}/${SRC_FILE}"
-SRC_URI += "file://0001-dmaengine-replace-chip-ID.patch"
 
 inherit module
 

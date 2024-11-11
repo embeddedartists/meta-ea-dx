@@ -11,13 +11,13 @@ It must be restructured to follow the expected folder structure
 for kernel modules.
 
 ```
-tar -xzvf dx_rt_npu_linux_driver_v1.0.0.tar.gz
+tar -xzvf dx_rt_npu_linux_driver_v1.0.7.tar.gz
 cd dx_rt_npu_linux_driver/
 mv modules/* .
 rm -r modules
 cd ..
-mv dx_rt_npu_linux_driver dx-rt-npu-1.0.0
-tar czf dx-rt-npu-1.0.0.tar.gz dx-rt-npu-1.0.0/
+mv dx_rt_npu_linux_driver dx-rt-npu-1.0.7
+tar czf dx-rt-npu-1.0.7.tar.gz dx-rt-npu-1.0.7/
 ```
 
 ### dx-rt (Runtime)
@@ -26,7 +26,7 @@ The original tar.gz file must be renamed since underscore '_'
 has a special meaning in Yocto.
 
 ```
-mv dx_rt_v1.0.0.tar.gz dx-rt-1.0.0.tar.gz
+mv dx_rt_v2.0.3.tar.gz dx-rt-2.0.3.tar.gz
 ```
 
 ### dx-app (Example applications)
@@ -35,7 +35,7 @@ The original tar.gz file must be renamed since underscore '_'
 has a special meaning in Yocto.
 
 ```
-mv dx_app_0.1.0.tar.gz dx-app-0.1.0.tar.gz
+mv dx_app_1.0.6.tar.gz dx-app-1.0.6.tar.gz
 ```
 
 ### Put files on EA NAS
@@ -65,6 +65,12 @@ Add the following to `conf/local.conf`
 IMAGE_INSTALL:append = " dx-rt-npu"
 IMAGE_INSTALL:append = " dx-rt"
 IMAGE_INSTALL:append = " dx-app"
+```
+
+Add the following to `conf/local.conf` to get the `update-pciids` command to work
+
+```
+IMAGE_INSTALL:append = " gzip"
 ```
 
 ### Yocto distribution

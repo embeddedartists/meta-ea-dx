@@ -4,10 +4,10 @@ LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
 SRC_PATH ?= "/mnt/uuu-storage/deepx"
-SRC_FILE ?= "dx-rt-1.1.2.tar.gz"
+SRC_FILE ?= "dx-rt-2.0.3.tar.gz"
 
 SRC_URI = "file://${SRC_PATH}/${SRC_FILE}"
-SRC_URI += "file://0001-remove-invalid-dependencies.patch"
+#SRC_URI += "file://0001-remove-invalid-dependencies.patch"
 
 S = "${WORKDIR}/dx_rt"
 
