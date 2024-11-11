@@ -11,7 +11,7 @@ SRC_URI += "file://0001-dmaengine-replace-chip-ID.patch"
 
 inherit module
 
-DX_DEVICE="m1"
+DX_DEVICE="m1a"
 DX_PCIE="deepx"
 
 EXTRA_OEMAKE = "KERNEL_DIR=${STAGING_KERNEL_BUILDDIR} DEVICE=${DX_DEVICE} PCIE=${DX_PCIE}"
