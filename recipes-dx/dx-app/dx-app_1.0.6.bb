@@ -8,7 +8,7 @@ SRC_PATH ?= "/mnt/uuu-storage/deepx"
 SRC_FILE ?= "dx-app-1.0.6.tar.gz"
 
 SRC_URI = "file://${SRC_PATH}/${SRC_FILE}"
-#SRC_URI += "file://0001-fix-install-paths.patch"
+SRC_URI += "file://0001-fix-install-paths.patch"
 
 S = "${WORKDIR}/dx_app"
 

@@ -46,6 +46,30 @@ By default, it will use ```/mnt/uuu-storage/deepx``` as source path.
 On the build servers this path is normally the same as 
 ```//192.168.6.2/products/Boards/COM_iMX_Common/mfgtools/no_backup/deepx```
 
+
+### The python 'dx_engine' package
+
+The 'dx_engine' python package can be installed on target by:
+
+1. Download the dx-rt-2.0.3.tar.gz to target and extract it
+2. cd dx-rt
+3. sed -i 's/sudo //g' build.sh
+4. sed -i 's;/usr/bin/aarch64-linux-gnu-;;g' cmake/toolchain.aarch64.cmake
+5. ./build.sh
+6. cd python_package
+7. pip install .
+
+Step 6 produces the interesting file ``python_package/src/dx_engine/capi/_pydxrt.cpython-311-aarch64-linux-gnu.so``
+which unfortunately cannot be crosscompiled in yocto (yet).
+
+So the python3-dxengine package relies on it being precompiled. Do that by
+1. Follow steps 1-5 above
+2. Transfer it to the build server
+3. Replace the content of python3-dxengine/files/prebuilt_lib_for_dxengine_2.0.3.zip with
+   the newly built .so file. Remember to keep the folder structure of the zip file so that
+   the file is placed correctly by the recipe.
+
+
 ## How to use
 
 Clone this repository into the `sources` directory.
@@ -59,19 +83,19 @@ Add the layer to the end of `conf/bblayers.conf`:
 
 `BBLAYERS += " ${BSPDIR}/sources/meta-ea-dx "`
 
-Add the following to `conf/local.conf`
+For a minimal build, add the following to `conf/local.conf`
 
 ```
-IMAGE_INSTALL:append = " dx-rt-npu"
-IMAGE_INSTALL:append = " dx-rt"
-IMAGE_INSTALL:append = " dx-app"
+IMAGE_INSTALL:append = " packagegroup-ea-dx-base"
 ```
 
-Add the following to `conf/local.conf` to get the `update-pciids` command to work
+Or for a more complete build with build tools, opencv and more, add the following to `conf/local.conf`
 
 ```
-IMAGE_INSTALL:append = " gzip"
+EXTRA_IMAGE_FEATURES += "package-management dev-pkgs"
+IMAGE_INSTALL:append = " packagegroup-ea-dx-extended"
 ```
+
 
 ### Yocto distribution
 
@@ -84,9 +108,14 @@ DISTRO=fsl-imx-xwayland MACHINE=imx8mmea-ucom source ea-setup-release.sh -b 8mm-
 ```
 
 
+### Create a toolchain
 
+After building the ea-image-base as normal, create a toolchain by running:
 
+```
+bitbake -c populate_sdk ea-image-base
+```
 
-
-
+This will add the dx-rt, kernel header files etc so that the toolchain can
+be used outside of yocto to crosscompile e.g. dx-app for target.
 
