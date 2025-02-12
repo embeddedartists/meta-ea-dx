@@ -4,20 +4,11 @@
 
 ### dx-rt-npu (Kernel driver)
 
-The original tar.gz file must be restructured and renamed before used 
-as source for the Yocto recipe. It must be renamed since underscore '_'
-has a special meaning in Yocto and should not be used in file names.
-It must be restructured to follow the expected folder structure
-for kernel modules.
+The original tar.gz file must be renamed since underscore '_'
+has a special meaning in Yocto.
 
 ```
-tar -xzvf dx_rt_npu_linux_driver_v1.0.7.tar.gz
-cd dx_rt_npu_linux_driver/
-mv modules/* .
-rm -r modules
-cd ..
-mv dx_rt_npu_linux_driver dx-rt-npu-1.0.7
-tar czf dx-rt-npu-1.0.7.tar.gz dx-rt-npu-1.0.7/
+mv dx_rt_npu_linux_driver_v1.3.1.tar.gz dx-rt-npu-1.3.1.tar.gz
 ```
 
 ### dx-rt (Runtime)
@@ -26,7 +17,7 @@ The original tar.gz file must be renamed since underscore '_'
 has a special meaning in Yocto.
 
 ```
-mv dx_rt_v2.0.3.tar.gz dx-rt-2.0.3.tar.gz
+mv dx_rt_v2.6.3.tar.gz dx-rt-2.6.3.tar.gz
 ```
 
 ### dx-app (Example applications)
@@ -51,7 +42,7 @@ On the build servers this path is normally the same as
 
 The 'dx_engine' python package can be installed on target by:
 
-1. Download the dx-rt-2.0.3.tar.gz to target and extract it
+1. Download the dx-rt-2.6.3.tar.gz to target and extract it
 2. cd dx-rt
 3. sed -i 's/sudo //g' build.sh
 4. sed -i 's;/usr/bin/aarch64-linux-gnu-;;g' cmake/toolchain.aarch64.cmake
@@ -65,7 +56,7 @@ which unfortunately cannot be crosscompiled in yocto (yet).
 So the python3-dxengine package relies on it being precompiled. Do that by
 1. Follow steps 1-5 above
 2. Transfer it to the build server
-3. Replace the content of python3-dxengine/files/prebuilt_lib_for_dxengine_2.0.3.zip with
+3. Replace the content of python3-dxengine/files/prebuilt_lib_for_dxengine_2.6.3.zip with
    the newly built .so file. Remember to keep the folder structure of the zip file so that
    the file is placed correctly by the recipe.
 

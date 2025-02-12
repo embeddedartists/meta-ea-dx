@@ -8,6 +8,8 @@ SRC_FILE ?= "${BP}.tar.gz"
 
 SRC_URI = "file://${SRC_PATH}/${SRC_FILE}"
 
+S = "${WORKDIR}/dx_rt_npu_linux_driver/modules"
+
 inherit module
 
 DX_DEVICE="m1a"
