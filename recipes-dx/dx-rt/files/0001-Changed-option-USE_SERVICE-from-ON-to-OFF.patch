@@ -1,0 +1,19 @@
+From 86fe8c623e1ba9c029f863645ee225a02c010ec5 Mon Sep 17 00:00:00 2001
+From: Anders Lindvall <anders.lindvall@embeddedartists.com>
+Date: Wed, 26 Feb 2025 17:30:46 +0000
+Subject: [PATCH] Changed option USE_SERVICE from ON to OFF
+
+---
+ cmake/dxrt.cfg.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/dxrt.cfg.cmake b/cmake/dxrt.cfg.cmake
+index 3eb8a42..864f92d 100644
+--- a/cmake/dxrt.cfg.cmake
++++ b/cmake/dxrt.cfg.cmake
+@@ -9,4 +9,4 @@ else()
+ endif()
+ option(USE_PYTHON "Use Python" ON)
+ option(ENABLE_DEBUG_INFO "Include debugging informations in build output" ON)
+-option(USE_SERVICE "Use DXRT Service" ON)
++option(USE_SERVICE "Use DXRT Service" OFF)
