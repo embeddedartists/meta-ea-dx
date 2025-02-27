@@ -1,7 +1,7 @@
 SUMMARY = "DEEPX Runtime NPU linux driver"
 
 LICENSE = "CLOSED"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
+LIC_FILES_CHKSUM = "file://${WORKDIR}/npu_driver/LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
 SRC_PATH ?= "/mnt/uuu-storage/deepx"
 SRC_FILE ?= "npu_linux_driver_tmp_v1.3.3.tar.gz"

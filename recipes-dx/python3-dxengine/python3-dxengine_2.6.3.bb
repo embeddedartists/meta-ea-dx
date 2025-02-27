@@ -1,7 +1,7 @@
 SUMMARY = "DX Engine Python3 Package"
 
 LICENSE = "CLOSED"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
+LIC_FILES_CHKSUM = "file://${WORKDIR}/dx_rt/LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
 SRC_PATH ?= "/mnt/uuu-storage/deepx"
 SRC_FILE ?= "dx-rt-2.6.3.tar.gz"
