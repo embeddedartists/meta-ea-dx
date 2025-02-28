@@ -12,7 +12,8 @@ RRECOMMENDS:${PN} = " \
     python3-numpy \
     cmake \
     \
-    packagegroup-fsl-opencv-imx \
+    ${@bb.utils.contains('MACHINE', 'imx8mmea-ucom', 'packagegroup-fsl-opencv-imx', '', d)} \
+    \
     python3-six \
     python3-lxml \
     ninja \
