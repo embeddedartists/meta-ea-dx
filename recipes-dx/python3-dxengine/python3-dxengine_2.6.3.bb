@@ -7,7 +7,7 @@ SRC_PATH ?= "/mnt/uuu-storage/deepx"
 SRC_FILE ?= "dx-rt-2.6.3.tar.gz"
 
 SRC_URI = "file://${SRC_PATH}/${SRC_FILE}"
-SRC_URI += "file://prebuilt_lib_for_dxengine_2.0.3.zip"
+SRC_URI += "file://prebuilt_lib_for_dxengine_2.6.3.zip"
 
 S = "${WORKDIR}/dx_rt/python_package"
 

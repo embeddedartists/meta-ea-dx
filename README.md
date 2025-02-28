@@ -43,14 +43,19 @@ On the build servers this path is normally the same as
 The 'dx_engine' python package can be installed on target by:
 
 1. Download the dx-rt-2.6.3.tar.gz to target and extract it
-2. cd dx-rt
+2. cd dx_rt
 3. sed -i 's/sudo //g' build.sh
 4. sed -i 's;/usr/bin/aarch64-linux-gnu-;;g' cmake/toolchain.aarch64.cmake
-5. ./build.sh
-6. cd python_package
-7. pip install .
+5. cd extern
+6. wget https://github.com/pybind/pybind11/archive/refs/heads/master.zip
+7. unzip master.zip
+8. mv pybind11-master/ pybind11
+9. cd ..
+10 ./build.sh --clean
+11. cd python_package
+12. pip install .
 
-Step 6 produces the interesting file ``python_package/src/dx_engine/capi/_pydxrt.cpython-311-aarch64-linux-gnu.so``
+Step 10 produces the interesting file ``python_package/src/dx_engine/capi/_pydxrt.cpython-312-aarch64-linux-gnu.so``
 which unfortunately cannot be crosscompiled in yocto (yet).
 
 So the python3-dxengine package relies on it being precompiled. Do that by
