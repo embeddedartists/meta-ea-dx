@@ -51,7 +51,7 @@ The 'dx_engine' python package can be installed on target by:
 7. unzip master.zip
 8. mv pybind11-master/ pybind11
 9. cd ..
-10 ./build.sh --clean
+10. ./build.sh --clean
 11. cd python_package
 12. pip install .
 
@@ -91,6 +91,22 @@ Or for a more complete build with build tools, opencv and more, add the followin
 EXTRA_IMAGE_FEATURES += "package-management dev-pkgs"
 IMAGE_INSTALL:append = " packagegroup-ea-dx-extended"
 ```
+
+**NOTE**
+
+Yocto does *split-packages* which results in multiple "versions" of the same package.
+For example, dx-rt has the following:
+
+* dx-rt (the default, binaries and libdxrt.so)
+* dx-rt-dbg (a .debug folder is placed next to each of the binaries above and contains the debug version of that file)
+* dx-rt-dev (places .h/.hpp/.cmake files under /usr/include and /usr/lib)
+* dx-rt-src (places source code for the binaries and lib under /usr/src/debug/dx-rt/2.6.3)
+
+The dx-app recipe has dx-app, dx-app-dbg and dx-app-src.
+
+The dx-rt-npu recipe has dx-rt-npu, dx-rt-npu-dbg, dx-rt-npu-dev and dx-rt-npu-src.
+
+The python3-dxengine recipe has no extra versions.
 
 
 ### Yocto distribution

@@ -18,6 +18,12 @@ RRECOMMENDS:${PN} = " \
     python3-lxml \
     ninja \
     python3-pybind11 \
+    \
+    dx-rt-dev \
+    dx-rt-src \
+    dx-rt-npu-dev \
+    dx-rt-npu-src \
+    dx-app-src \
 "
 
 # replaced opencv with packagegroup-fsl-opencv-imx to get apps, samples and python support
