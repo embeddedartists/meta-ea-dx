@@ -1,5 +1,15 @@
+From 03e7b9636f3097e2752d088b05204510b9a91ada Mon Sep 17 00:00:00 2001
+From: Andreas Rebert <andreas.rebert@embeddedartists.com>
+Date: Fri, 31 May 2024 11:29:18 +0000
+Subject: [PATCH] Recipe for DX runtime
+
+---
+ CMakeLists.txt            | 4 ++--
+ cmake/dxrt.function.cmake | 1 -
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ed1cfa4..85f3ab6 100644
+index 70006b0..0d838df 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -25,7 +25,7 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
@@ -11,7 +21,7 @@ index ed1cfa4..85f3ab6 100644
  list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
  
-@@ -249,4 +249,4 @@ foreach(variable ${variables})
+@@ -258,4 +258,4 @@ foreach(variable ${variables})
      if(variable MATCHES "^USE_" OR variable MATCHES "^ENABLE_")
          message(STATUS "    ${variable}: ${${variable}}")
      endif()
@@ -19,12 +29,14 @@ index ed1cfa4..85f3ab6 100644
 \ No newline at end of file
 +endforeach()
 diff --git a/cmake/dxrt.function.cmake b/cmake/dxrt.function.cmake
-index 653f937..8f29fa7 100644
+index 7bd6b07..6e9c7e1 100644
 --- a/cmake/dxrt.function.cmake
 +++ b/cmake/dxrt.function.cmake
-@@ -57,5 +57,4 @@ macro(add_target target)
+@@ -57,7 +57,6 @@ macro(add_target target)
      add_executable(${target} ${ARG_SRC_LIST})
      add_dxrt(${target})
      install(TARGETS ${target} DESTINATION bin)
 -    install(TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin)
  endmacro(add_target)
+ 
+ macro(add_clangtidy)

@@ -8,7 +8,7 @@ The original tar.gz file must be renamed since underscore '_'
 has a special meaning in Yocto.
 
 ```
-mv dx_rt_npu_linux_driver_v1.3.1.tar.gz dx-rt-npu-1.3.1.tar.gz
+mv dx_rt_npu_linux_driver_v1.5.0.tar.gz dx-rt-npu-1.5.0.tar.gz
 ```
 
 ### dx-rt (Runtime)
@@ -17,7 +17,7 @@ The original tar.gz file must be renamed since underscore '_'
 has a special meaning in Yocto.
 
 ```
-mv dx_rt_v2.6.3.tar.gz dx-rt-2.6.3.tar.gz
+mv dx_rt_v2.9.5.tar.gz dx-rt-2.6.3.tar.gz
 ```
 
 ### dx-app (Example applications)
@@ -26,7 +26,7 @@ The original tar.gz file must be renamed since underscore '_'
 has a special meaning in Yocto.
 
 ```
-mv dx_app_1.0.6.tar.gz dx-app-1.0.6.tar.gz
+mv dx_app_1.10.0.tar.gz dx-app-1.10.0.tar.gz
 ```
 
 ### Put files on EA NAS
@@ -42,7 +42,7 @@ On the build servers this path is normally the same as
 
 The 'dx_engine' python package can be installed on target by:
 
-1. Download the dx-rt-2.6.3.tar.gz to target and extract it
+1. Download the dx-rt-2.9.5.tar.gz to target and extract it
 2. cd dx_rt
 3. sed -i 's/sudo //g' build.sh
 4. sed -i 's;/usr/bin/aarch64-linux-gnu-;;g' cmake/toolchain.aarch64.cmake

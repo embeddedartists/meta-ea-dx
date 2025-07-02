@@ -1,4 +1,4 @@
-From 86fe8c623e1ba9c029f863645ee225a02c010ec5 Mon Sep 17 00:00:00 2001
+From b16816895bf9509184e3fc6f6d3b30386a007ebe Mon Sep 17 00:00:00 2001
 From: Anders Lindvall <anders.lindvall@embeddedartists.com>
 Date: Wed, 26 Feb 2025 17:30:46 +0000
 Subject: [PATCH] Changed option USE_SERVICE from ON to OFF

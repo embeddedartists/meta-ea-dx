@@ -10,19 +10,19 @@ RDEPENDS:${PN} = " \
 RRECOMMENDS:${PN} = " \
     packagegroup-core-buildessential \
     python3-numpy \
+    python3-six \
+    python3-lxml \
+    python3-pybind11 \
     cmake \
     \
     ${@bb.utils.contains('MACHINE', 'imx8mmea-ucom', 'packagegroup-fsl-opencv-imx', '', d)} \
+    ${@bb.utils.contains('MACHINE', 'imx8mmea-som', 'packagegroup-fsl-opencv-imx', '', d)} \
     \
-    python3-six \
-    python3-lxml \
     ninja \
-    python3-pybind11 \
     \
-    dx-rt-dev \
-    dx-rt-src \
     dx-rt-npu-dev \
     dx-rt-npu-src \
+    dx-rt-src \
     dx-app-src \
 "
 

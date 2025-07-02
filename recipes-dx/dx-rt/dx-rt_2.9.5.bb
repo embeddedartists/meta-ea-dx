@@ -4,12 +4,13 @@ LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
 SRC_PATH ?= "/mnt/uuu-storage/deepx"
-SRC_FILE ?= "dx-rt-2.6.3.tar.gz"
+SRC_FILE ?= "dx-rt-2.9.5.tar.gz"
 
 SRC_URI = "file://${SRC_PATH}/${SRC_FILE} \
            file://0001-remove-invalid-dependencies.patch \
            file://0002-remove-example-invalid-dependencies.patch \
            file://0001-Changed-option-USE_SERVICE-from-ON-to-OFF.patch \
+           file://0004-Removed-example-invalid-dependancies-new-in-2.9.5.patch \
            "
 
 S = "${WORKDIR}/dx_rt"
@@ -29,3 +30,4 @@ FILES:${PN} = "${bindir}/*"
 #      .so '/usr/lib/libdxrt.so' [dev-elf]
 FILES_SOLIBSDEV = ""
 FILES:${PN} += "${libdir}/*.so*"
+
