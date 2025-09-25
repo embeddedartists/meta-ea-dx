@@ -1,0 +1,71 @@
+From 235dc96b1a1b88fb2094173960aaff5890cbfc77 Mon Sep 17 00:00:00 2001
+From: Andreas Rebert <andreas.rebert@embeddedartists.com>
+Date: Thu, 25 Sep 2025 13:38:40 +0000
+Subject: [PATCH] use isntalled dataroot
+
+---
+ CMakeLists.txt | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5cf6236..39f2124 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,5 @@
+ cmake_minimum_required(VERSION 3.14)
++include(GNUInstallDirs)
+ 
+ if(MSVC)
+     if(NOT DEFINED DXRT_DIR OR NOT EXISTS ${DXRT_DIR})
+@@ -16,7 +17,9 @@ endif()
+ 
+ project(dxapp DESCRIPTION "DEEPX Application Templates")
+ 
+-get_filename_component(PROJECT_ROOT_DIR ${CMAKE_SOURCE_DIR} ABSOLUTE)
++# Use an install-time location, not the build host source tree.
++# This avoids Yocto QA 'buildpaths' and makes runtime paths stable.
++set(PROJECT_ROOT_DIR "${CMAKE_INSTALL_FULL_DATADIR}/dx-app")
+ add_compile_definitions(PROJECT_ROOT_DIR="${PROJECT_ROOT_DIR}")
+ 
+ if (MSVC)
+@@ -44,9 +47,7 @@ endif()
+ set(CMAKE_CXX_STANDARD 14)
+ set(CMAKE_CXX_STANDARD_REQUIRED "ON")
+ 
+-if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+-    set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/release" CACHE PATH "Default install path" FORCE)
+-endif()
++# Let the packaging system control CMAKE_INSTALL_PREFIX (no source/binary tree installs)
+ 
+ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake) # using function & cfg cmake file
+ 
+@@ -78,7 +79,7 @@ else()
+ endif()
+ 
+ if(ENABLE_DEBUG_INFO)
+-    if (NOT MSVC) 
++    if (NOT MSVC)
+         add_compile_options(-g -rdynamic)
+     endif()
+ endif()
+@@ -95,7 +96,7 @@ if(MSVC)
+ else()
+     execute_process(
+         COMMAND which python
+-        OUTPUT_VARIABLE Python_EXECUTABLE 
++        OUTPUT_VARIABLE Python_EXECUTABLE
+         OUTPUT_STRIP_TRAILING_WHITESPACE
+     )
+ endif()
+@@ -122,7 +123,7 @@ message(STATUS "CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
+ message(STATUS "CMAKE_SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR}")
+ message(STATUS "CMAKE_HOST_SYSTEM_PROCESSOR: ${CMAKE_HOST_SYSTEM_PROCESSOR}")
+ message(STATUS "CMAKE_TOOLCHAIN_FILE: ${CMAKE_TOOLCHAIN_FILE}")
+-message(STATUS "CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}") 
++message(STATUS "CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
+ message(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
+ message(STATUS "CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
+ message(STATUS "CMAKE_CURRENT_LIST_DIR: ${CMAKE_CURRENT_LIST_DIR}")
+-- 
+2.34.1
+

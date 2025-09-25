@@ -1,14 +1,12 @@
 SUMMARY = "DEEPX Runtime NPU linux driver"
 
 LICENSE = "CLOSED"
-LIC_FILES_CHKSUM = "file://${WORKDIR}/dx_rt_npu_linux_driver/LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
+LIC_FILES_CHKSUM = "file://${WORKDIR}/git/LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
-SRC_PATH ?= "/mnt/uuu-storage/deepx"
-SRC_FILE ?= "${BP}.tar.gz"
+SRC_URI = "git://github.com/DEEPX-AI/dx_rt_npu_linux_driver;branch=main;protocol=https"
+SRCREV = "9b61de90a03aa9948eacc0709322fbca664a84cf"
 
-SRC_URI = "file://${SRC_PATH}/${SRC_FILE}"
-
-S = "${WORKDIR}/dx_rt_npu_linux_driver/modules"
+S = "${WORKDIR}/git/modules"
 
 inherit module
 
