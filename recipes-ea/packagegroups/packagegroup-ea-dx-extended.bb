@@ -24,6 +24,7 @@ RRECOMMENDS:${PN} = " \
     dx-rt-npu-src \
     dx-rt-src \
     dx-app-src \
+    python3-dxengine \
 "
 
 # replaced opencv with packagegroup-fsl-opencv-imx to get apps, samples and python support

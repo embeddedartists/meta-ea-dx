@@ -8,7 +8,6 @@ RDEPENDS:${PN} = " \
     dx-rt-dev \
     dx-app \
     gzip \
-    python3-dxengine \
 "
 
 # the dx-* packages are obvious except for dx-rt-dev which is needed when
