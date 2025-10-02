@@ -3,6 +3,7 @@ From: Andreas Rebert <andreas.rebert@embeddedartists.com>
 Date: Fri, 31 May 2024 11:29:18 +0000
 Subject: [PATCH] Recipe for DX runtime
 
+Upstream-Status: Inappropriate [oe specific]
 ---
  CMakeLists.txt            | 4 ++--
  cmake/dxrt.function.cmake | 1 -

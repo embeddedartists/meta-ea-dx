@@ -1,3 +1,4 @@
+Upstream-Status: Inappropriate [EA specific]
 diff --git a/cmake/dxrt.cfg.cmake b/cmake/dxrt.cfg.cmake
 index a4d72ec..d8beb37 100644
 --- a/cmake/dxrt.cfg.cmake

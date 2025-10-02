@@ -3,6 +3,7 @@ From: Anders Lindvall <anders.lindvall@embeddedartists.com>
 Date: Wed, 2 Jul 2025 11:07:25 +0000
 Subject: [PATCH] Changed path to gen.h created by dx-rt
 
+Upstream-Status: Inappropriate [EA specific]
 ---
  CMakeLists.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

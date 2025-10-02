@@ -3,6 +3,7 @@ From: Andreas Rebert <andreas.rebert@embeddedartists.com>
 Date: Thu, 25 Sep 2025 13:38:40 +0000
 Subject: [PATCH] use isntalled dataroot
 
+Upstream-Status: Inappropriate [oe specific]
 ---
  CMakeLists.txt | 15 ++++++++-------
  1 file changed, 8 insertions(+), 7 deletions(-)
