@@ -14,6 +14,13 @@ S = "${WORKDIR}/git"
 
 inherit cmake
 
+EXTRA_OECMAKE += "\
+  -DCMAKE_SKIP_RPATH=ON \
+  -DCMAKE_BUILD_WITH_INSTALL_RPATH=OFF \
+  -DCMAKE_INSTALL_RPATH= \
+  -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=OFF \
+"
+
 FILES:${PN} = "${bindir}/*"
 
 # The build contains unversioned libraries resulting in build error
