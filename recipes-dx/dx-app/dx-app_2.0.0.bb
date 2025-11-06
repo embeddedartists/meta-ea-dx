@@ -40,9 +40,4 @@ EXTRA_OECMAKE += "\
   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
 "
 
-# (Optional but handy) make the compile log verbose while you’re iterating
-# NOTE: safe to remove once clean.
-OECMAKE_GENERATOR = "Unix Makefiles"
-EXTRA_OECMAKE += " -DCMAKE_VERBOSE_MAKEFILE=ON"
-
 FILES:${PN} = "/usr/bin/*"
