@@ -1,0 +1,22 @@
+From 508ab1d346047da5e0dc1ed6ce11cd1c44034b4d Mon Sep 17 00:00:00 2001
+From: Andreas Rebert <andreas.rebert@embeddedartists.com>
+Date: Tue, 18 Nov 2025 11:47:59 +0000
+Subject: [PATCH 2/2] Set USE_SERVICE to OFF
+
+---
+ cmake/dxrt.cfg.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/dxrt.cfg.cmake b/cmake/dxrt.cfg.cmake
+index 770daaa..d8beb37 100644
+--- a/cmake/dxrt.cfg.cmake
++++ b/cmake/dxrt.cfg.cmake
+@@ -11,4 +11,4 @@ option(USE_DXRT_TEST "Use DXRT Unit Test" ON)
+ 
+ option(USE_ORT "Use ONNX Runtime" OFF)
+ option(USE_PYTHON "Use Python" ON)
+-option(USE_SERVICE "Use DXRT Service" ON)
++option(USE_SERVICE "Use DXRT Service" OFF)
+-- 
+2.34.1
+

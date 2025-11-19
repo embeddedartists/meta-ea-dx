@@ -4,6 +4,10 @@ LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 DEPENDS = "dx-rt opencv"
 
+RDEPENDS:${PN} += " opencv"
+# make sure qtwayland and plugins are available for a wayland build
+RDEPENDS:${PN} += " ${@bb.utils.contains('DISTRO_FEATURES','wayland qt','qtwayland qtbase-plugins','',d)}"
+
 SRC_URI = "git://github.com/DEEPX-AI/dx_app;branch=main;protocol=https"
 SRCREV = "cab28ddbb7c87d4eec5f88d9bddaf5ba69fbf2f3"
 
@@ -36,10 +40,5 @@ EXTRA_OECMAKE += "\
   -DCMAKE_SHARED_LINKER_FLAGS:STRING='${LDFLAGS}' \
   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
 "
-
-# (Optional but handy) make the compile log verbose while you’re iterating
-# NOTE: safe to remove once clean.
-OECMAKE_GENERATOR = "Unix Makefiles"
-EXTRA_OECMAKE += " -DCMAKE_VERBOSE_MAKEFILE=ON"
 
 FILES:${PN} = "/usr/bin/*"

@@ -1,0 +1,24 @@
+From fb6b0a42fa750d88581bdaa7e113c8b224903d8c Mon Sep 17 00:00:00 2001
+From: Andreas Rebert <andreas.rebert@embeddedartists.com>
+Date: Tue, 18 Nov 2025 11:47:36 +0000
+Subject: [PATCH 1/2] Set USE_ORT to OFF
+
+---
+ cmake/dxrt.cfg.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/dxrt.cfg.cmake b/cmake/dxrt.cfg.cmake
+index a4d72ec..770daaa 100644
+--- a/cmake/dxrt.cfg.cmake
++++ b/cmake/dxrt.cfg.cmake
+@@ -9,6 +9,6 @@ else()
+ endif()
+ option(USE_DXRT_TEST "Use DXRT Unit Test" ON)
+ 
+-option(USE_ORT "Use ONNX Runtime" ON)
++option(USE_ORT "Use ONNX Runtime" OFF)
+ option(USE_PYTHON "Use Python" ON)
+ option(USE_SERVICE "Use DXRT Service" ON)
+-- 
+2.34.1
+
