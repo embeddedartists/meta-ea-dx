@@ -6,14 +6,17 @@ LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
 SRC_URI += "file://0001-remove-invalid-dependencies.patch \
-           file://0001-Set-USE_ORT-to-OFF.patch \
            file://0002-Change-install-dir-for-dxrtd.patch"
 
 
 S = "${WORKDIR}/git"
 
+DEPENDS = "onnxruntime"
 
 inherit cmake systemd
+
+# onnxruntime headers are installed in onnxruntime sub-directory
+CXXFLAGS:append = " -I${STAGING_INCDIR}/onnxruntime"
 
 FILES:${PN} = "${bindir}/*"
 
