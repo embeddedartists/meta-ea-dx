@@ -10,8 +10,9 @@ SRC_URI = "git://github.com/DEEPX-AI/dx_app;branch=main;protocol=https"
 SRCREV = "cab28ddbb7c87d4eec5f88d9bddaf5ba69fbf2f3"
 
 SRC_URI += "file://0001-Changed-path-to-gen.h-created-by-dx-rt.patch \
-            file://0001-use-installed-dataroot.patch \
-           "
+            file://0001-use-installed-dataroot.patch"
+
+SRC_URI:append = " ${@bb.utils.contains('PACKAGECONFIG', 'profiling', 'file://0001-Enable-profiling-for-yolo-1ch-demo.patch', '', d)}"
 
 S = "${WORKDIR}/git"
 
@@ -38,5 +39,8 @@ EXTRA_OECMAKE += "\
   -DCMAKE_SHARED_LINKER_FLAGS:STRING='${LDFLAGS}' \
   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
 "
+
+PACKAGECONFIG ??= ""
+PACKAGECONFIG[profiling] = ",,,"
 
 FILES:${PN} = "/usr/bin/*"
