@@ -1,0 +1,34 @@
+From c1102749d216551ca6a68ca7bb8da6531af423e4 Mon Sep 17 00:00:00 2001
+From: Andreas Rebert <andreas.rebert@embeddedartists.com>
+Date: Wed, 3 Dec 2025 11:54:52 +0000
+Subject: [PATCH] Enable profiling for yolo 1ch demo
+
+---
+ demos/object_detection/yolo_1channel.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/demos/object_detection/yolo_1channel.cpp b/demos/object_detection/yolo_1channel.cpp
+index 75fb77c..d1e5eb7 100755
+--- a/demos/object_detection/yolo_1channel.cpp
++++ b/demos/object_detection/yolo_1channel.cpp
+@@ -96,6 +96,10 @@ DXRT_TRY_CATCH_BEGIN
+     LOG_VALUE(cameraInput);
+     LOG_VALUE(rtspURL);
+ 
++    dxrt::Configuration::GetInstance().SetEnable(dxrt::Configuration::ITEM::PROFILER, true);
++    dxrt::Configuration::GetInstance().SetAttribute(dxrt::Configuration::ITEM::PROFILER,
++        dxrt::Configuration::ATTRIBUTE::PROFILER_SHOW_DATA, "ON");
++
+     dxrt::InferenceOption op_od;
+     op_od.devices.push_back(0); 
+ 
+@@ -416,4 +420,4 @@ DXRT_TRY_CATCH_BEGIN
+ DXRT_TRY_CATCH_END
+ 
+     return 0;
+-}
+\ No newline at end of file
++}
+-- 
+2.34.1
+
