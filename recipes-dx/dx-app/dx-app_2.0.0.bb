@@ -4,6 +4,8 @@ LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 DEPENDS = "dx-rt opencv"
 
+RDEPENDS:${PN} += " opencv"
+
 SRC_URI = "git://github.com/DEEPX-AI/dx_app;branch=main;protocol=https"
 SRCREV = "cab28ddbb7c87d4eec5f88d9bddaf5ba69fbf2f3"
 
