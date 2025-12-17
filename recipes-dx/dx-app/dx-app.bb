@@ -5,14 +5,16 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 DEPENDS = "dx-rt opencv"
 
 SRC_URI = "git://github.com/DEEPX-AI/dx_app;branch=main;protocol=https"
-SRCREV = "cab28ddbb7c87d4eec5f88d9bddaf5ba69fbf2f3"
+SRCREV = "477119a7ac04dedc28e41867dd86a7f623f3ef12"
 
-SRC_URI += "file://0001-Changed-path-to-gen.h-created-by-dx-rt.patch \
-            file://0001-use-installed-dataroot.patch"
+SRC_URI += "file://0001-Use-install-time-location-not-source-tree-2.1.patch \
+            file://0002-Change-path-to-gen.h-2.1.patch"
 
-SRC_URI:append = " ${@bb.utils.contains('PACKAGECONFIG', 'profiling', 'file://0001-Enable-profiling-for-yolo-1ch-demo.patch', '', d)}"
+SRC_URI:append = " ${@bb.utils.contains('PACKAGECONFIG', 'profiling', 'file://0003-Enable-profiling-for-yolo-1ch-demo-2.1.patch', '', d)}"
 
 S = "${WORKDIR}/git"
+
+PV = "2.1.0"
 
 # Give a hint to the dx-app/CMakeLists.txt on where to find the /include/dxrt/gen.h
 # file. This is the staging dir for the dx-app and the original CMakeLists.txt file

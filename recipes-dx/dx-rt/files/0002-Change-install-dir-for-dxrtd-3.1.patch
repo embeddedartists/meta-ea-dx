@@ -1,13 +1,15 @@
-Upstream-Status: Inappropriate [EA specific]
-From 2f4c01e39bd5d322902bc33176271aafd9e40477 Mon Sep 17 00:00:00 2001
+From 72542ab12355fd4933942bd414d6ec8e3302509d Mon Sep 17 00:00:00 2001
+From: Andreas Rebert <andreas.rebert@embeddedartists.com>
+Date: Mon, 15 Dec 2025 12:44:48 +0000
 Subject: [PATCH] Change install dir for dxrtd
 
+Upstream-Status: Inappropriate [EA specific]
 ---
  service/dxrt.service | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/service/dxrt.service b/service/dxrt.service
-index 4f8169a..d79f2b5 100644
+index c9fbcd3..19973ac 100644
 --- a/service/dxrt.service
 +++ b/service/dxrt.service
 @@ -2,8 +2,8 @@
@@ -19,8 +21,8 @@ index 4f8169a..d79f2b5 100644
 +ExecStart=/usr/bin/dxrtd
 +WorkingDirectory=/usr/bin/
  Restart=on-failure
+ RestartSec=2s
  
- [Install]
 -- 
 2.34.1
 
