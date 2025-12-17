@@ -1,0 +1,34 @@
+From a03ad5f3de053ade28f093c2d5e855920144322a Mon Sep 17 00:00:00 2001
+From: Andreas Rebert <andreas.rebert@embeddedartists.com>
+Date: Mon, 15 Dec 2025 13:20:26 +0000
+Subject: [PATCH 2/2] Remove invalid install dir for dxbench and dxtop
+
+Upstream-Status: Inappropriate [oe specific]
+---
+ cli/dxbenchmark/CMakeLists.txt | 1 -
+ cli/dxtop/CMakeLists.txt       | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/cli/dxbenchmark/CMakeLists.txt b/cli/dxbenchmark/CMakeLists.txt
+index 84d3aed..ab87fb1 100644
+--- a/cli/dxbenchmark/CMakeLists.txt
++++ b/cli/dxbenchmark/CMakeLists.txt
+@@ -19,5 +19,4 @@ else()
+ endif()
+   
+ install( TARGETS ${target} DESTINATION bin )
+-install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin )
+ 
+diff --git a/cli/dxtop/CMakeLists.txt b/cli/dxtop/CMakeLists.txt
+index 13e8629..4a40168 100644
+--- a/cli/dxtop/CMakeLists.txt
++++ b/cli/dxtop/CMakeLists.txt
+@@ -28,5 +28,4 @@ else()
+ endif()
+   
+ install( TARGETS ${target} DESTINATION bin )
+-install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin )
+ 
+-- 
+2.34.1
+

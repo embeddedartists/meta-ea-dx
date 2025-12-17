@@ -5,10 +5,12 @@ require dx-rt.inc
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
-SRC_URI += "file://0001-remove-invalid-dependencies.patch \
-           file://0002-Change-install-dir-for-dxrtd.patch"
+SRC_URI += "file://0001-Remove-invalid-dependencies-3.1.patch \
+            file://0002-Change-install-dir-for-dxrtd-3.1.patch \
+            file://0003-Remove-invalid-install-dir-for-dxbench-and-dxtop.patch"
 
 
+PV = "3.1.0"
 S = "${WORKDIR}/git"
 
 DEPENDS = "onnxruntime"

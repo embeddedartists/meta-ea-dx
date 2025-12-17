@@ -1,0 +1,45 @@
+From 38e046ad5564de5c7d32c7bd6e8a0783f3280f82 Mon Sep 17 00:00:00 2001
+From: Andreas Rebert <andreas.rebert@embeddedartists.com>
+Date: Mon, 15 Dec 2025 13:42:28 +0000
+Subject: [PATCH 1/3] Use install time location, not source tree
+
+Upstream-Status: Inappropriate [EA specific]
+---
+ CMakeLists.txt | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fcfd60e..40b3d91 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,5 @@
+ cmake_minimum_required(VERSION 3.14)
++include(GNUInstallDirs)
+ 
+ if(MSVC)
+     if(NOT DEFINED DXRT_DIR OR NOT EXISTS ${DXRT_DIR})
+@@ -16,7 +17,9 @@ endif()
+ 
+ project(dxapp DESCRIPTION "DEEPX Application Templates")
+ 
+-get_filename_component(PROJECT_ROOT_DIR ${CMAKE_SOURCE_DIR} ABSOLUTE)
++# Use an install-time location, not the build host source tree.
++# This avoids Yocto QA 'buildpaths' and makes runtime paths stable.
++set(PROJECT_ROOT_DIR "${CMAKE_INSTALL_FULL_DATADIR}/dx-app")
+ add_compile_definitions(PROJECT_ROOT_DIR="${PROJECT_ROOT_DIR}")
+ 
+ if (MSVC)
+@@ -47,9 +50,7 @@ if(MSVC)
+  endif()
+ set(CMAKE_CXX_STANDARD_REQUIRED "ON")
+ 
+-if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+-    set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/release" CACHE PATH "Default install path" FORCE)
+-endif()
++# Let the packaging system control CMAKE_INSTALL_PREFIX (no source/binary tree installs)
+ 
+ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake) # using function & cfg cmake file
+ 
+-- 
+2.34.1
+

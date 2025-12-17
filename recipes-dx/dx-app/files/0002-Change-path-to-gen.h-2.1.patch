@@ -1,17 +1,17 @@
-From f5f8fa60074d1a5113948173229b7935b2b51282 Mon Sep 17 00:00:00 2001
-From: Anders Lindvall <anders.lindvall@embeddedartists.com>
-Date: Wed, 2 Jul 2025 11:07:25 +0000
-Subject: [PATCH] Changed path to gen.h created by dx-rt
+From 8fc003785db35ecad6bdb9db61330c7fd6b79869 Mon Sep 17 00:00:00 2001
+From: Andreas Rebert <andreas.rebert@embeddedartists.com>
+Date: Mon, 15 Dec 2025 13:43:56 +0000
+Subject: [PATCH 2/3] Change path to gen.h
 
 ---
  CMakeLists.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 0ec689a..bf751fb 100644
+index 40b3d91..3c203d9 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -57,7 +57,7 @@ include(dxapp.function)
+@@ -72,7 +72,7 @@ include(dxapp.function)
  
  if(CROSS_COMPILE)
      set(CMAKE_SKIP_RPATH TRUE)
@@ -20,3 +20,6 @@ index 0ec689a..bf751fb 100644
      if(header_contents MATCHES "#define USE_ORT")
          message(STATUS "THIS IS ONNX_RUNTIME")
          set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath-link,${onnxruntime_LIB_DIRS}")
+-- 
+2.34.1
+
