@@ -5,12 +5,12 @@ require dx-rt.inc
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
-SRC_URI += "file://0001-Remove-invalid-dependencies-3.1.patch \
-            file://0002-Change-install-dir-for-dxrtd-3.1.patch \
+SRC_URI += "file://0001-Remove-invalid-dependencies.patch \
+            file://0002-Change-install-dir-for-dxrtd.patch \
             file://0003-Remove-invalid-install-dir-for-dxbench-and-dxtop.patch"
 
 
-PV = "3.1.0"
+PV = "3.2.0"
 S = "${WORKDIR}/git"
 
 DEPENDS = "onnxruntime"
@@ -19,6 +19,13 @@ inherit cmake systemd
 
 # onnxruntime headers are installed in onnxruntime sub-directory
 CXXFLAGS:append = " -I${STAGING_INCDIR}/onnxruntime"
+
+EXTRA_OECMAKE += "\
+  -DCMAKE_SKIP_RPATH=ON \
+  -DCMAKE_BUILD_WITH_INSTALL_RPATH=OFF \
+  -DCMAKE_INSTALL_RPATH= \
+  -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=OFF \
+"
 
 FILES:${PN} = "${bindir}/*"
 
@@ -55,5 +62,3 @@ do_install:append() {
 }
 
 FILES:${PN} += "${systemd_system_unitdir}/dxrt.service"
-
-

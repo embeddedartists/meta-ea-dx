@@ -3,6 +3,7 @@ From: Andreas Rebert <andreas.rebert@embeddedartists.com>
 Date: Mon, 15 Dec 2025 12:54:36 +0000
 Subject: [PATCH] Remove invalid dependencies
 
+Upstream-Status: Inappropriate [oe specific]
 ---
  CMakeLists.txt            | 2 +-
  cmake/dxrt.function.cmake | 1 -

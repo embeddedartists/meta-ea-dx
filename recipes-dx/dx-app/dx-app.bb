@@ -7,16 +7,14 @@ DEPENDS = "dx-rt opencv"
 RDEPENDS:${PN} += " opencv"
 
 SRC_URI = "git://github.com/DEEPX-AI/dx_app;branch=main;protocol=https"
-SRCREV = "477119a7ac04dedc28e41867dd86a7f623f3ef12"
+SRCREV = "a2adb010ca820f03dcc47000e5f1b74bdd82862a"
 
-SRC_URI += "file://0001-Use-install-time-location-not-source-tree-2.1.patch \
-            file://0002-Change-path-to-gen.h-2.1.patch"
-
-SRC_URI:append = " ${@bb.utils.contains('PACKAGECONFIG', 'profiling', 'file://0003-Enable-profiling-for-yolo-1ch-demo-2.1.patch', '', d)}"
+SRC_URI += "file://0001-Change-path-to-gen.h.patch \
+            file://0002-Removed-reference-to-TMPDIR.patch"
 
 S = "${WORKDIR}/git"
 
-PV = "2.1.0"
+PV = "3.0.1"
 
 # Give a hint to the dx-app/CMakeLists.txt on where to find the /include/dxrt/gen.h
 # file. This is the staging dir for the dx-app and the original CMakeLists.txt file
@@ -24,7 +22,7 @@ PV = "2.1.0"
 # other parts of the build process.
 EXTRA_OECMAKE += "-DDXRT_GEN_FILE_ROOT_DIR=${STAGING_EXECPREFIXDIR}"
 
-inherit cmake
+inherit pkgconfig cmake
 
 # Add prefix maps that also rewrite strings produced by macros like __FILE__
 # Map both WORKDIR and S to a benign relative path so *no* host/build paths leak.
@@ -43,6 +41,5 @@ EXTRA_OECMAKE += "\
 "
 
 PACKAGECONFIG ??= ""
-PACKAGECONFIG[profiling] = ",,,"
 
 FILES:${PN} = "/usr/bin/*"

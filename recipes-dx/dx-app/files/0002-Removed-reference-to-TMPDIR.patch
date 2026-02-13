@@ -1,0 +1,29 @@
+From 65c38c971acda0e0c102e64238b5a00d42a21508 Mon Sep 17 00:00:00 2001
+From: Anders Lindvall <anders.lindvall@embeddedartists.com>
+Date: Fri, 6 Feb 2026 07:53:19 +0000
+Subject: [PATCH] Removed reference to TMPDIR
+
+Upstream-Status: Inappropriate [EA specific]
+---
+ src/utility/common_util.hpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/utility/common_util.hpp b/src/utility/common_util.hpp
+index 2a1de90..a3ee176 100644
+--- a/src/utility/common_util.hpp
++++ b/src/utility/common_util.hpp
+@@ -61,7 +61,10 @@ namespace fs = std::experimental::filesystem;
+     }                                                                                            \
+     catch (const dxrt::Exception &e) {                                                           \
+         std::cerr << RED << e.what() << " error-code=" << e.code() << RESET << std::endl;        \
+-        fs::path dx_app_dir(fs::canonical(PROJECT_ROOT_DIR));                                    \
++        /* Cannot use PROJECT_ROOT_DIR here as it is an absolute path on the build server, */    \
++        /* not a valid path in runtime (i.e. on target). Having PROJECT_ROOT_DIR here will */    \
++        /* result in yocto QA Issue errors about references to TMPDIR. */                        \
++        fs::path dx_app_dir = "";                                                                \
+         fs::path setup_script = dx_app_dir / SETUP_FILE_PATH;                                    \
+         std::cerr << "dx_app_dir: " << dx_app_dir.string() << std::endl;                         \
+         if (e.code() == 257) {                                                                   \
+-- 
+2.43.0
+
