@@ -4,11 +4,11 @@ LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/git/LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
 SRC_URI = "git://github.com/DEEPX-AI/dx_rt_npu_linux_driver;branch=main;protocol=https"
-SRCREV = "a90cd9616f6ebe1e10feafb1371e4ca11f0c2c48"
+SRCREV = "e4c4ddf7d2681443ac015c65444c5a1ade54478f"
 
 S = "${WORKDIR}/git/modules"
 
-PV = "1.8.0"
+PV = "2.1.0"
 
 inherit module
 
