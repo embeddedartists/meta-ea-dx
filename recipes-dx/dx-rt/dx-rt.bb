@@ -10,7 +10,7 @@ SRC_URI += "file://0001-Remove-invalid-dependencies.patch \
             file://0003-Remove-invalid-install-dir-for-dxbench-and-dxtop.patch"
 
 
-PV = "3.2.0"
+PV = "3.3.2"
 S = "${WORKDIR}/git"
 
 DEPENDS = "onnxruntime"

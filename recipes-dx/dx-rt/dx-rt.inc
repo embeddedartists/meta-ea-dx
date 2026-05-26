@@ -2,4 +2,4 @@ SUMMARY = "DX Runtime shared settings"
 
 DXRT_BRANCH ?= "main"
 SRC_URI = "git://github.com/DEEPX-AI/dx_rt;branch=${DXRT_BRANCH};protocol=https"
-SRCREV = "12728c20e794546f21d06fd19b9727c1114997fd"
+SRCREV = "a30624494506607b65a5d621e5cd37d3c2dbcb99"
