@@ -1,11 +1,10 @@
 SUMMARY = "DX User Application examples"
 
+require dx-app.inc
+
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 DEPENDS = "dx-rt opencv"
-
-SRC_URI = "git://github.com/DEEPX-AI/dx_app;branch=main;protocol=https"
-SRCREV = "ba7b802039194e40519c52474de19bc5599c59ec"
 
 SRC_URI += "file://0001-Change-path-to-gen.h.patch \
             file://0002-Removed-reference-to-TMPDIR.patch \
