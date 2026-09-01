@@ -6,6 +6,8 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/git/LICENSE;md5=df0ebe3edba67d21cb2e798ef0
 SRC_URI = "git://github.com/DEEPX-AI/dx_rt_npu_linux_driver;branch=main;protocol=https"
 SRCREV = "c05be168ea0c28757737035ea58aab6e59f03256"
 
+SRC_URI += "file://0001-dx-lib-fix-empty-debug-macros.patch"
+
 S = "${WORKDIR}/git/modules"
 
 PV = "2.4.1"

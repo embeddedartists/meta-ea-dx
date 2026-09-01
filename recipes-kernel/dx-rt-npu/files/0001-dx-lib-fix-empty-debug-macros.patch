@@ -1,0 +1,29 @@
+diff --git a/pci_deepx/include/dx_lib.h b/pci_deepx/include/dx_lib.h
+index bb68785..a49373f 100644
+--- a/pci_deepx/include/dx_lib.h
++++ b/pci_deepx/include/dx_lib.h
+@@ -26,15 +26,15 @@
+ #define dbg_msg 	pr_err
+ #else
+ /* disable debugging */
+-#define dbg_core(...)
+-#define dbg_fops(...)
+-#define dbg_perf(...)
+-#define dbg_sg(...)
+-#define dbg_tfr(...)
+-#define dbg_irq(...)
+-#define dbg_init(...)
+-#define dbg_desc(...)
+-#define dbg_msg(...)
++#define dbg_core(...)	do { } while (0)
++#define dbg_fops(...)	do { } while (0)
++#define dbg_perf(...)	do { } while (0)
++#define dbg_sg(...)	do { } while (0)
++#define dbg_tfr(...)	do { } while (0)
++#define dbg_irq(...)	do { } while (0)
++#define dbg_init(...)	do { } while (0)
++#define dbg_desc(...)	do { } while (0)
++#define dbg_msg(...)	do { } while (0)
+ #endif
+
+ #endif /* DX_LIB_H */
