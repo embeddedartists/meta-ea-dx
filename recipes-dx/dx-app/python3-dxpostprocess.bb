@@ -5,8 +5,6 @@ require dx-app.inc
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
-S = "${WORKDIR}/git"
-
 inherit python_pep517 python3targetconfig
 PEP517_BUILD_BACKEND = "scikit_build_core.build"
 

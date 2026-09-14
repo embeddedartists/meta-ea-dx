@@ -10,7 +10,6 @@ SRC_URI += "file://0001-Change-path-to-gen.h.patch \
             file://0002-Removed-reference-to-TMPDIR.patch \
             file://0003-Remove-reference-to-TMPDIR-2.patch"
 
-S = "${WORKDIR}/git"
 
 PV = "3.1.1"
 

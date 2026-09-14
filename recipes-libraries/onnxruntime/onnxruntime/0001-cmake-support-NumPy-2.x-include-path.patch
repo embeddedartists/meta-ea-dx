@@ -1,0 +1,29 @@
+Subject: [PATCH] cmake: support NumPy 2.x include directory
+
+NumPy 2.x moved its C header directory from numpy/core/include to
+numpy/_core/include.
+
+Keep support for both layouts when cross compiling.
+
+Upstream-Status: Inappropriate [NXP specific cross-compilation workaround]
+
+---
+ cmake/CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/CMakeLists.txt b/cmake/CMakeLists.txt
+index 37a6460ca..7147ad39b 100644
+--- a/cmake/CMakeLists.txt
++++ b/cmake/CMakeLists.txt
+@@ -532,7 +532,10 @@ if (onnxruntime_BUILD_SHARED_LIB OR onnxruntime_ENABLE_PYTHON)
+         # Find NumPy include
+         if (NOT Python_NumPy_INCLUDE_DIRS)
+           get_parent_directory(${Python_INCLUDE_DIR} 1 Python_USR_PATH)
+-          file(GLOB Python_NumPy_INCLUDE_DIR_CANDIDATES "${Python_USR_PATH}/lib/*/site-packages/numpy/core/include")
++          file(GLOB Python_NumPy_INCLUDE_DIR_CANDIDATES
++            "${Python_USR_PATH}/lib/*/site-packages/numpy/_core/include"
++            "${Python_USR_PATH}/lib/*/site-packages/numpy/core/include"
++          )
+           list(GET Python_NumPy_INCLUDE_DIR_CANDIDATES 0 Python_NumPy_INCLUDE_DIR)
+           message(STATUS "Target Numpy include path: ${Python_NumPy_INCLUDE_DIR}")
+         endif()

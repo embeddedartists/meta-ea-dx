@@ -1,19 +1,19 @@
 SUMMARY = "DEEPX Runtime NPU linux driver"
 
 LICENSE = "CLOSED"
-LIC_FILES_CHKSUM = "file://${WORKDIR}/git/LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
+LIC_FILES_CHKSUM = "file://${UNPACKDIR}/${BP}/LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
 SRC_URI = "git://github.com/DEEPX-AI/dx_rt_npu_linux_driver;branch=main;protocol=https"
 SRCREV = "c05be168ea0c28757737035ea58aab6e59f03256"
 
-S = "${WORKDIR}/git/modules"
+S = "${UNPACKDIR}/${BP}/modules"
 
 PV = "2.4.1"
 
 inherit module
 
-DX_DEVICE="m1a"
-DX_PCIE="deepx"
+DX_DEVICE = "m1a"
+DX_PCIE = "deepx"
 
 EXTRA_OEMAKE = "KERNEL_DIR=${STAGING_KERNEL_BUILDDIR} DEVICE=${DX_DEVICE} PCIE=${DX_PCIE}"
 MODULES_INSTALL_TARGET = "install"
@@ -31,5 +31,5 @@ do_install:append () {
 	install -m 0644 ${S}/51-deepx-udev.rules ${D}${sysconfdir}/udev/rules.d/
 }
 
-FILES:${PN}="${sysconfdir}/modprobe.d/dx_dma.conf \
+FILES:${PN} = "${sysconfdir}/modprobe.d/dx_dma.conf \
              ${sysconfdir}/udev/rules.d/51-deepx-udev.rules"

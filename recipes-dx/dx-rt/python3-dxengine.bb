@@ -3,7 +3,7 @@ require dx-rt.inc
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://../LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
-S = "${WORKDIR}/git/python_package"
+S = "${UNPACKDIR}/${BP}/python_package"
 
 inherit python_pep517 python3targetconfig
 PEP517_BUILD_BACKEND = "scikit_build_core.build"
@@ -48,7 +48,7 @@ do_install() {
         rm -rf "$tmpdir"
         install -d "$tmpdir"
         unzip -q "$whl" -d "$tmpdir"
-        cp -a "$tmpdir"/* ${D}${PYTHON_SITEPACKAGES_DIR}/
+        cp -R --no-preserve=ownership "$tmpdir"/* ${D}${PYTHON_SITEPACKAGES_DIR}/
     done
 }
 
