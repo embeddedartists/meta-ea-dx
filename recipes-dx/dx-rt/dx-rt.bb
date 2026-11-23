@@ -11,7 +11,7 @@ SRC_URI += "file://0001-Remove-invalid-dependencies.patch \
             file://0004-cxxopts-include-cstdint-for-uint8_t.patch"
 
 
-PV = "3.3.2"
+PV = "3.5.0"
 
 DEPENDS = "onnxruntime"
 

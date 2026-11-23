@@ -3,7 +3,12 @@ require dx-rt.inc
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://../LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
+SRC_URI += "file://0005-dxengine-change-pybind11-req-version.patch;patchdir=${UNPACKDIR}/${BP} \
+            "
+
 S = "${UNPACKDIR}/${BP}/python_package"
+
+
 
 inherit python_pep517 python3targetconfig
 PEP517_BUILD_BACKEND = "scikit_build_core.build"

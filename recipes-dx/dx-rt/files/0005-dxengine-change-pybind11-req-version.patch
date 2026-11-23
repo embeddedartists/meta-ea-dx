@@ -1,0 +1,19 @@
+Upstream-Status: Inappropriate [EA specific]
+---
+
+diff --git a/python_package/pyproject.toml b/python_package/pyproject.toml
+index 7c5721c..f5a8ec8 100644
+--- a/python_package/pyproject.toml
++++ b/python_package/pyproject.toml
+@@ -21,7 +21,7 @@ addopts = ["-vv", "-s"]
+
+
+ [build-system]
+-requires = ["scikit-build-core[pyproject]>=0.9.0","setuptools>=42", "wheel", "pybind11>=2.11,<3"]
++requires = ["scikit-build-core[pyproject]>=0.9.0","setuptools>=42", "wheel", "pybind11>=2.11,<4"]
+ build-backend = "scikit_build_core.build"
+
+ [project]
+--
+2.34.1
+

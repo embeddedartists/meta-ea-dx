@@ -1,34 +1,48 @@
-From a03ad5f3de053ade28f093c2d5e855920144322a Mon Sep 17 00:00:00 2001
-From: Andreas Rebert <andreas.rebert@embeddedartists.com>
-Date: Mon, 15 Dec 2025 13:20:26 +0000
 Subject: [PATCH 2/2] Remove invalid install dir for dxbench and dxtop
 
 Upstream-Status: Inappropriate [oe specific]
 ---
- cli/dxbenchmark/CMakeLists.txt | 1 -
- cli/dxtop/CMakeLists.txt       | 1 -
- 2 files changed, 2 deletions(-)
 
 diff --git a/cli/dxbenchmark/CMakeLists.txt b/cli/dxbenchmark/CMakeLists.txt
 index 84d3aed..ab87fb1 100644
 --- a/cli/dxbenchmark/CMakeLists.txt
 +++ b/cli/dxbenchmark/CMakeLists.txt
-@@ -19,5 +19,4 @@ else()
- endif()
-   
+@@ -23,5 +23,4 @@ endif()
+ dxrt_enable_release_strip_keep_unstripped(${target})
+
  install( TARGETS ${target} DESTINATION bin )
 -install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin )
- 
+
 diff --git a/cli/dxtop/CMakeLists.txt b/cli/dxtop/CMakeLists.txt
 index 13e8629..4a40168 100644
 --- a/cli/dxtop/CMakeLists.txt
 +++ b/cli/dxtop/CMakeLists.txt
-@@ -28,5 +28,4 @@ else()
- endif()
-   
+@@ -35,5 +35,4 @@ endif()
+ dxrt_enable_release_strip_keep_unstripped(${target})
+
  install( TARGETS ${target} DESTINATION bin )
 -install( TARGETS ${target} DESTINATION ${CMAKE_SOURCE_DIR}/bin )
- 
--- 
+
+diff --git a/cli/CMakeLists.txt b/cli/CMakeLists.txt
+index 2db4ced..aa2fd41 100644
+--- a/cli/CMakeLists.txt
++++ b/cli/CMakeLists.txt
+@@ -7,7 +7,6 @@ foreach(source_file ${SRC_FILES})
+         add_executable(${filename} ${source_file})
+         add_dxrt(${filename})
+         install(TARGETS ${filename} DESTINATION bin)
+-        install(TARGETS ${filename} DESTINATION ${CMAKE_SOURCE_DIR}/bin)
+     else()
+         # Other CLI tools need C++ internals — link against static library.
+         add_target(${filename} SRC_LIST ${source_file})
+@@ -78,7 +77,6 @@ else()
+         set(_install_prefix_bin \"\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/bin\")
+         set(_bin_dirs
+             \"\${_install_prefix_bin}\"
+-            \"${CMAKE_SOURCE_DIR}/bin\"
+         )
+         set(_pairs \"${_COMPAT_ALIASES}\")
+         list(LENGTH _pairs _len)
+--
 2.34.1
 
