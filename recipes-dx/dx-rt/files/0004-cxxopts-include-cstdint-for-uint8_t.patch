@@ -1,0 +1,26 @@
+Date: Fri, 11 Sep 2026 05:10:00 +0000
+Subject: [PATCH 2/2] cxxopts: include cstdint for uint8_t cxxopts.hpp uses
+ uint8_t directly but does not include <cstdint>. Recent GCC/libstdc++
+ versions no longer make the type available through the headers included
+ indirectly.
+
+Upstream-Status: Inappropriate [EA specific]
+---
+ extern/include/dxrt/extern/cxxopts.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/extern/include/dxrt/extern/cxxopts.hpp b/extern/include/dxrt/extern/cxxopts.hpp
+index aef2846..aa7c215 100644
+--- a/extern/include/dxrt/extern/cxxopts.hpp
++++ b/extern/include/dxrt/extern/cxxopts.hpp
+@@ -41,6 +41,7 @@ THE SOFTWARE.
+ #include <vector>
+ #include <algorithm>
+ #include <locale>
++#include <cstdint>
+
+ #ifdef CXXOPTS_NO_EXCEPTIONS
+ #include <iostream>
+--
+2.34.1
+

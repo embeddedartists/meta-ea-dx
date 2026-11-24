@@ -1,0 +1,29 @@
+Subject: [PATCH] Remove reference to TMPDIR
+
+Upstream-Status: Inappropriate [EA specific]
+---
+diff --git a/src/cpp_example/common/utility/repo_path.hpp b/src/cpp_example/common/utility/repo_path.hpp
+index 3f3373a8..cb77b055 100644
+--- a/src/cpp_example/common/utility/repo_path.hpp
++++ b/src/cpp_example/common/utility/repo_path.hpp
+@@ -118,16 +118,13 @@ inline std::string RuntimeRoot() {
+         }
+         return root;
+     }
+-#if defined(PROJECT_ROOT_DIR)
+-    return std::string(PROJECT_ROOT_DIR);
+-#else
++
+     static const std::string found = [] {
+         std::string root = FindMarkedRoot(ExecutableDir());
+         if (root.empty()) root = FindMarkedRoot(WorkingDir());
+         return root.empty() ? WorkingDir() : root;
+     }();
+     return found;
+-#endif
+ }
+
+ /// `path` read against RuntimeRoot().
+--
+2.34.1
+

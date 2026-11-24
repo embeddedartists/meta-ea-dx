@@ -10,11 +10,13 @@ RDEPENDS:${PN} += " opencv"
 
 SRC_URI += "file://0001-Change-path-to-gen.h.patch \
             file://0002-Removed-reference-to-TMPDIR.patch \
-            file://0003-Remove-reference-to-TMPDIR-2.patch"
+            file://0003-Remove-reference-to-TMPDIR-2.patch \
+            file://0004-Remove-reference-to-TMPDIR-repo-path.patch \
+            "
 
 S = "${WORKDIR}/git"
 
-PV = "3.1.1"
+PV = "3.3.0"
 
 # Give a hint to the dx-app/CMakeLists.txt on where to find the /include/dxrt/gen.h
 # file. This is the staging dir for the dx-app and the original CMakeLists.txt file

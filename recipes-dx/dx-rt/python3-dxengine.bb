@@ -3,6 +3,8 @@ require dx-rt.inc
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = "file://../LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
+SRC_URI += "file://0005-dxengine-change-pybind11-req-version.patch;patchdir=${WORKDIR}/git"
+
 S = "${WORKDIR}/git/python_package"
 
 inherit python_pep517 python3targetconfig
@@ -48,7 +50,7 @@ do_install() {
         rm -rf "$tmpdir"
         install -d "$tmpdir"
         unzip -q "$whl" -d "$tmpdir"
-        cp -a "$tmpdir"/* ${D}${PYTHON_SITEPACKAGES_DIR}/
+        cp -R --no-preserve=ownership "$tmpdir"/* ${D}${PYTHON_SITEPACKAGES_DIR}/
     done
 }
 

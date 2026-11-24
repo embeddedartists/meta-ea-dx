@@ -7,10 +7,11 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=df0ebe3edba67d21cb2e798ef0ee2905"
 
 SRC_URI += "file://0001-Remove-invalid-dependencies.patch \
             file://0002-Change-install-dir-for-dxrtd.patch \
-            file://0003-Remove-invalid-install-dir-for-dxbench-and-dxtop.patch"
+            file://0003-Remove-invalid-install-dir-for-dxbench-and-dxtop.patch \
+            file://0004-cxxopts-include-cstdint-for-uint8_t.patch"
 
 
-PV = "3.3.2"
+PV = "3.5.0"
 S = "${WORKDIR}/git"
 
 DEPENDS = "onnxruntime"
